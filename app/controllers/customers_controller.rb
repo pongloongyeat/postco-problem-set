@@ -28,7 +28,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to @customer, notice: 'Your response has been recorded! Thank you for shopping with Tapir Grocer.' }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new }
