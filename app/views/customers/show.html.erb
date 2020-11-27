@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @customer.full_name %>
+</p>
+
+<p>
+  <strong>Nric num:</strong>
+  <%= @customer.nric_num %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @customer.temperature %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
