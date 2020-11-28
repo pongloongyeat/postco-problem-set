@@ -27,7 +27,7 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label :branch_id %>
+    <%= form.label "Branch location" %>
     <% if current_branch != nil %>
       <%= form.text_field :branch_id, class:"form-control", id: :customer_branch_id, :required => true, value:current_branch.id %>
     <% else %>
