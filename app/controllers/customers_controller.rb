@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_branch!, except: []
 
   # GET /customers
   # GET /customers.json
@@ -69,6 +70,6 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.require(:customer).permit(:full_name, :nric_num, :temperature)
+      params.require(:customer).permit(:full_name, :nric_num, :temperature, :branch_id)
     end
 end
