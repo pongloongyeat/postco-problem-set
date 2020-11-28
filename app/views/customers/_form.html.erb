@@ -31,7 +31,14 @@
     <% if current_branch != nil %>
       <%= form.text_field :branch_id, class:"form-control", id: :customer_branch_id, :required => true, value:current_branch.id %>
     <% else %>
-      <%= form.text_field :branch_id, class:"form-control", id: :customer_branch_id, :required => true, value:1 %>
+      <!-- If the customer is attempting to fill up the form then current_branch will be nil
+      in which case the link provided should contain the location data so the customer doesn't
+      need to manually pick the grocery branch that they are in. -->
+      <% if params[:branch_id] %>
+        <%= form.text_field :branch_id, class:"form-control", id: :customer_branch_id, :required => true, value: params[:branch_id] %>
+      <% else %>
+        <%= form.text_field :branch_id, class:"form-control", id: :customer_branch_id, :required => true, value: "1" %>
+      <% end %>
     <% end %>
   </div>
 
