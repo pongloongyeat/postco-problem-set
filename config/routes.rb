@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :branches
   resources :customers
   root  'home#index'
   get   'home/about'
