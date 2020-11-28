@@ -1,4 +1,6 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edit Profile</h2>
+
+<hr/>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -14,10 +16,10 @@
 
   <div class="field form-group">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "#{@minimum_password_length} characters minimum" %>
+    <% else %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <% end %>
   </div>
 
