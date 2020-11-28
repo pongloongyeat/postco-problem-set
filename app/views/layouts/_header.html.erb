@@ -20,6 +20,21 @@
       <li class="nav-item active">
         <%= link_to "Contact tracing", customers_path, class:"nav-link" %>
       </li>
+
+      <% if branch_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to "Sign out", destroy_branch_session_path, method: :delete, class:"nav-link" %>
+        </li>
+
+        <li class="nav-item active">
+          <%= link_to "Edit profile", edit_branch_registration_path, class:"nav-link" %>
+        </li>
+        
+      <% else %>
+        <li class="nav-item active">
+          <%= link_to "Sign in", branch_session_path, class:"nav-link" %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>
