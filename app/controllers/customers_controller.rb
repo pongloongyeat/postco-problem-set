@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_branch!, except: [:new]
+  before_action :authenticate_branch!, except: [:new, :show, :create]
 
   # GET /customers
   # GET /customers.json
