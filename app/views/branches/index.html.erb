@@ -1,2 +1,4 @@
-<h1>Branches#index</h1>
-<p>Find me in app/views/branches/index.html.erb</p>
+<% @branches.each do |branch| %>
+  <%= branch.email %><br/>
+  <%= branch.id %><br/>
+<% end %>
