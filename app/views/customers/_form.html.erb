@@ -32,7 +32,7 @@
     <% @branches = Branch.all %>
     <% list_of_branches = [] %>
     <% @branches.each do |branch| %>
-      <% branch_option = branch.id.to_s + " - " +  branch.email %>
+      <% branch_option = branch.id.to_s + " - " +  branch.branch_name %>
       <% list_of_branches.push (branch_option) %>
     <% end %>
 
