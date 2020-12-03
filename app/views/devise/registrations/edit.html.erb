@@ -15,6 +15,11 @@
   <% end %>
 
   <div class="field form-group">
+    <%= f.label :branch_name %><br />
+    <%= f.text_field :branch_name, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <% if @minimum_password_length %>
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "#{@minimum_password_length} characters minimum" %>

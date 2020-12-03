@@ -11,6 +11,11 @@
   </div>
 
   <div class="field form-group">
+    <%= f.label :branch_name %><br />
+    <%= f.text_field :branch_name, autofocus: true, autocomplete: "branch-name", class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
