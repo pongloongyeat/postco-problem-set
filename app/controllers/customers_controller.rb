@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_branch!, except: [:new]
+  before_action :authenticate_branch!, except: [:new, :create]
 
   # GET /customers
   # GET /customers.json
@@ -38,13 +38,17 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Your response has been recorded! Thank you for shopping with Tapir Grocer.' }
-        format.json { render :show, status: :created, location: @customer }
+        redirect_url = "/customers/summary?full_name=" + @customer.full_name + "&nric_num=" + @customer.nric_num + "&temperature=" + @customer.temperature.to_s + "&branch_id=" + @customer.branch_id.to_s
+        format.html { redirect_to redirect_url, notice: 'Your response has been recorded! Thank you for shopping with Tapir Grocer.' }
+        format.json { render :summary, status: :created, location: @customer }
       else
         format.html { render :new }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def summary
   end
 
   # PATCH/PUT /customers/1
@@ -74,7 +78,9 @@ class CustomersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      @customer = Customer.find(params[:id])
+      if request.env['PATH_INFO'] != "/customers/summary"
+        @customer = Customer.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
