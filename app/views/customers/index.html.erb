@@ -28,11 +28,11 @@
   </tbody>
 </table>
 
-<br>
+<br/>
 
 <% @branches = Branch.all %>
-<%= link_to 'New Customer', new_customer_path + "?branch_id=" + @branches[current_branch.id].id.to_s + " - " + @branches[current_branch.id].branch_name %>
+<%= link_to 'New Customer', new_customer_path + "?branch_id=" + @branches[current_branch.id - 1].id.to_s + " - " + @branches[current_branch.id - 1].branch_name %>
 
 <br/>
 
-<%= link_to 'Generate QR code for this branch location', customers_qrcode_path + "?branch_id=" + @branches[current_branch.id].branch_name%>
+<%= link_to 'Generate QR code for this branch location', customers_qrcode_path + "?branch_id=" + @branches[current_branch.id - 1].id.to_s + "&branch_name=" + @branches[current_branch.id - 1].branch_name%>
