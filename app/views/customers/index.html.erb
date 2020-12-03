@@ -30,4 +30,6 @@
 
 <br>
 
-<%= link_to 'New Customer', new_customer_path %>
+<% @branches = Branch.all %>
+<% new_customer_with_location_link = "/customers/new?branch_id=" + @branches[current_branch.id].id.to_s + " - " + @branches[current_branch.id].branch_name %>
+<%= link_to 'New Customer', new_customer_with_location_link %>
