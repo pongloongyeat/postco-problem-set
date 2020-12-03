@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :branches
+
+  # Show additional pages under /customers
   resources :customers do
     collection do
       get :summary
