@@ -27,6 +27,15 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
 
+    # Since form submits a string, in format 
+    # {branch_id} - {branch_name} i.e. ^[0-9] - [a-zA-Z0-9]*$
+    # Let's strip the " - {branch_name}" part.
+    # Note this is a workaround and will give a
+    # warning since we're parsing a string into
+    # an integer field.
+    @customer.branch_id = customer_params["branch_id"].to_i
+    @customer.save
+
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Your response has been recorded! Thank you for shopping with Tapir Grocer.' }
