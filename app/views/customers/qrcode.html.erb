@@ -6,3 +6,9 @@
 <% qrcode = RQRCode::QRCode.new(request.original_url + "?branch_id=" + params[:branch_id]) %>
 <% svg = qrcode.as_svg(offset: 0, color: '000', shape_rendering: 'crispEdges', module_size: 6, standalone: true) %>
 <%= svg.html_safe %>
+
+
+<br />
+<br />
+
+<%= link_to 'Print view' %>
