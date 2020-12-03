@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/header' unless request.env['PATH_INFO'] == '/customers/qrcode' %>
     <div class="container">
       <br/>
       <% if notice %>

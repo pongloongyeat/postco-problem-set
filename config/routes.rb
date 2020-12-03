@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   resources :customers do
     collection do
       get :summary
+      get :qrcode
     end
   end
 
   root  'home#index'
   get   'home/about'
   get   'customers/summary'
+  get   'customers/qrcode'
 
   match 'branches', to: 'branches#index', via: 'get'
   match 'home', to: 'home#index', via: 'get'

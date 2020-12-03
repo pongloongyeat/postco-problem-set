@@ -1,0 +1,19 @@
+<center>
+    <h1>Welcome to Tapir Grocer @ <%= params[:branch_id] %></h1>
+
+    <br/>
+
+    <p>Due to the current COVID-19 outbreak, the Ministry of Health requires us to ensure that your visit is logged to ease contact tracing efforts.</p>
+    <p>It would be much to our delight if you could scan the following QR code and fill up the form that follows.</p>
+
+    <% require 'rqrcode' %>
+    <% qrcode = RQRCode::QRCode.new(request.original_url + "?branch_id=" + params[:branch_id]) %>
+    <% svg = qrcode.as_svg(offset: 0, color: '000', shape_rendering: 'crispEdges', module_size: 6, standalone: true) %>
+    <%= svg.html_safe %>
+
+
+    <br />
+    <br />
+
+    <strong>Thank you for visiting Tapir Grocer!</strong>
+</center>

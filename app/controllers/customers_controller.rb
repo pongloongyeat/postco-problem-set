@@ -78,7 +78,7 @@ class CustomersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      if request.env['PATH_INFO'] != "/customers/summary"
+      if request.env['PATH_INFO'] != "/customers/summary" || request.env['PATH_INFO'] != "/customers/qrcode" 
         @customer = Customer.find(params[:id])
       end
     end
