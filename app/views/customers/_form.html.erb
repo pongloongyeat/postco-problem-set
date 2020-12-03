@@ -28,8 +28,15 @@
 
   <div class="form-group">
     <label>Branch location</label>
-    <% get_branch_list() %>
-    <%= form.select :branch_id, options_for_select(['1 - Taman Tun', '2 - Sri Petaling', '3 - SS15'], params[:branch_id]), {}, { :class => "form-control"} %>
+
+    <% @branches = Branch.all %>
+    <% list_of_branches = [] %>
+    <% @branches.each do |branch| %>
+      <% branch_option = branch.id.to_s + " - " +  branch.email %>
+      <% list_of_branches.push (branch_option) %>
+    <% end %>
+
+    <%= form.select :branch_id, options_for_select(list_of_branches, params[:branch_id]), {}, { :class => "form-control"} %>
   </div>
 
   <div class="actions">
