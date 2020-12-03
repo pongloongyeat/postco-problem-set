@@ -1,5 +1,5 @@
 <center>
-    <h1>Welcome to Tapir Grocer @ <%= params[:branch_id] %></h1>
+    <h1>Welcome to Tapir Grocer @ <%= params[:branch_name] %></h1>
 
     <br/>
 
@@ -7,7 +7,7 @@
     <p>It would be much to our delight if you could scan the following QR code and fill up the form that follows.</p>
 
     <% require 'rqrcode' %>
-    <% qrcode = RQRCode::QRCode.new(request.original_url + "?branch_id=" + params[:branch_id]) %>
+    <% qrcode = RQRCode::QRCode.new(request.base_url + new_customer_path + "?branch_id=" + params[:branch_id].to_s + "%20-%20" + params[:branch_name]) %>
     <% svg = qrcode.as_svg(offset: 0, color: '000', shape_rendering: 'crispEdges', module_size: 6, standalone: true) %>
     <%= svg.html_safe %>
 
