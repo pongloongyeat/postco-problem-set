@@ -7,6 +7,7 @@
       <th>NRIC number</th>
       <th>Temperature</th>
       <th>Created at</th>
+      <th>Branch ID</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= customer.nric_num %></td>
         <td><%= customer.temperature %></td>
         <td><%= customer.created_at %></td>
+        <td><%= customer.branch_id %></td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
